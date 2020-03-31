@@ -1,3 +1,5 @@
+<!--App.vue是主组件，所有页面在App.vue下进行切换-->
+
 <template>
   <v-app>
     <v-toolbar class="blue lighten-4">
@@ -13,38 +15,19 @@
           <v-icon left class="mdi mdi-account-plus"></v-icon>
           Sign Up
         </v-btn>
+
       </v-toolbar-items>
     </v-toolbar>
+
     <v-navigation-drawer v-model="sideNav">
+      <v-list>
+        <v-list-item>
+          <v-icon class="mdi mdi-login">Login</v-icon>
+        </v-list-item>
+      </v-list>
     </v-navigation-drawer>
-<!--      <swiper ref="mySwiper" :options="swiperOptions">-->
-<!--        <swiper-slide>Slide 1</swiper-slide>-->
-<!--        <swiper-slide>Slide 2</swiper-slide>-->
-<!--        <swiper-slide>Slide 3</swiper-slide>-->
-<!--        <swiper-slide>Slide 4</swiper-slide>-->
-<!--        <swiper-slide>Slide 5</swiper-slide>-->
 
-<!--        <div class="swiper-pagination"  slot="pagination"></div>-->
-<!--        <div class="swiper-button-prev" slot="button-prev"></div>-->
-<!--        <div class="swiper-button-next" slot="button-next"></div>-->
-<!--        <div class="swiper-scrollbar"   slot="scrollbar"></div>-->
-<!--      </swiper>-->
-
-    <main>
-<!--            <swiper ref="mySwiper" :options="swiperOptions">-->
-<!--              <swiper-slide>Slide 1</swiper-slide>-->
-<!--              <swiper-slide>Slide 2</swiper-slide>-->
-<!--              <swiper-slide>Slide 3</swiper-slide>-->
-<!--              <swiper-slide>Slide 4</swiper-slide>-->
-<!--              <swiper-slide>Slide 5</swiper-slide>-->
-
-<!--              <div class="swiper-pagination"  slot="pagination"></div>-->
-<!--              <div class="swiper-button-prev" slot="button-prev"></div>-->
-<!--              <div class="swiper-button-next" slot="button-next"></div>-->
-<!--              <div class="swiper-scrollbar"   slot="scrollbar"></div>-->
-<!--            </swiper>-->
-      <swiper-slide>I am Slide 1</swiper-slide>
-    </main>
+      <router-view></router-view>
   </v-app>
 </template>
 

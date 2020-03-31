@@ -1,151 +1,130 @@
+
 <template>
-  <v-container>
-    <v-row class="text-center">
-      <v-col cols="12">
-        <v-img
-          :src="require('../assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        />
-      </v-col>
+      <v-container style="height: 100%">
+            <v-row>
+                  <v-col cols="1"></v-col>
+                  <v-col :align="alignment" style="height: 300px" cols="10">
+                        <div class="scroll">
+                              <swiper :options="swiperOption" ref="mySwiper">
+                                    <!-- slides -->
+                                    <swiper-slide>I'm Slide 1</swiper-slide>
+                                    <swiper-slide>I'm Slide 2</swiper-slide>
+                                    <swiper-slide>I'm Slide 3</swiper-slide>
+                                    <swiper-slide>I'm Slide 4</swiper-slide>
+                                    <swiper-slide>I'm Slide 5</swiper-slide>
 
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
-        </h1>
+                                    <!-- Optional controls -->
+                                    <div class="swiper-pagination "  slot="pagination"></div>
+                                    <div class="swiper-button-prev swiper-button-black" slot="button-prev"></div>
+                                    <div class="swiper-button-next swiper-button-black" slot="button-next"></div>
+                                    <!-- <div class="swiper-scrollbar"   slot="scrollbar"></div> -->
+                              </swiper>
+                        </div>
 
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br>please join our online
-          <a
-            href="https://community.vuetifyjs.com"
-            target="_blank"
-          >Discord Community</a>
-        </p>
-      </v-col>
+                  </v-col>
+            </v-row>
+            <v-row justify="center">
+                  <v-col
+                        cols="6"
+                        style="height: 500px"
+                  >
+                        <v-btn>Login</v-btn>
+                  </v-col>
+                  <v-col
+                        cols="6"
+                        md="2"
+                  >
+                        <v-btn>Upload</v-btn>
+                  </v-col>
+            </v-row>
 
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          What's next?
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(next, i) in whatsNext"
-            :key="i"
-            :href="next.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ next.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          Important Links
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(link, i) in importantLinks"
-            :key="i"
-            :href="link.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ link.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          Ecosystem
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
-        </v-row>
-      </v-col>
-    </v-row>
-  </v-container>
+      </v-container>
 </template>
 
 <script>
-  export default {
-    name: 'HelloWorld',
-
-    data: () => ({
-      ecosystem: [
-        {
-          text: 'vuetify-loader',
-          href: 'https://github.com/vuetifyjs/vuetify-loader',
-        },
-        {
-          text: 'github',
-          href: 'https://github.com/vuetifyjs/vuetify',
-        },
-        {
-          text: 'awesome-vuetify',
-          href: 'https://github.com/vuetifyjs/awesome-vuetify',
-        },
-      ],
-      importantLinks: [
-        {
-          text: 'Documentation',
-          href: 'https://vuetifyjs.com',
-        },
-        {
-          text: 'Chat',
-          href: 'https://community.vuetifyjs.com',
-        },
-        {
-          text: 'Made with Vuetify',
-          href: 'https://madewithvuejs.com/vuetify',
-        },
-        {
-          text: 'Twitter',
-          href: 'https://twitter.com/vuetifyjs',
-        },
-        {
-          text: 'Articles',
-          href: 'https://medium.com/vuetify',
-        },
-      ],
-      whatsNext: [
-        {
-          text: 'Explore components',
-          href: 'https://vuetifyjs.com/components/api-explorer',
-        },
-        {
-          text: 'Select a layout',
-          href: 'https://vuetifyjs.com/layout/pre-defined',
-        },
-        {
-          text: 'Frequently Asked Questions',
-          href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
-        },
-      ],
-    }),
-  }
+      import { swiper, swiperSlide } from 'vue-awesome-swiper'
+      export default {
+            name: 'HelloWorld',
+            components: {
+                  swiper,
+                  swiperSlide
+            },
+            data () {
+                  return {
+                        //页面布局
+                        alignment:'center',
+                        //轮播图
+                        swiperOption: {
+                              notNextTick: true,
+                              loop:true,
+                              //设定初始化时slide的索引
+                              initialSlide:0,
+                              //自动播放
+                              // autoplay:true,
+                              autoplay: {
+                                  delay: 3000,
+                                  stopOnLastSlide: false,
+                                  disableOnInteraction: true,
+                              },
+                              // 设置轮播
+                              effect : 'flip',
+                              //滑动速度
+                              speed:800,
+                              //滑动方向
+                              direction : 'horizontal',
+                              //小手掌抓取滑动
+                              // grabCursor : true,
+                              //滑动之后回调函数
+                              on: {
+                                    slideChangeTransitionEnd: function(){
+                                          // console.log(this.activeIndex);//切换结束时，告诉我现在是第几个slide
+                                    },
+                              },
+                              //左右点击
+                              navigation: {
+                                    nextEl: '.swiper-button-next',
+                                    prevEl: '.swiper-button-prev',
+                              },
+                              //分页器设置
+                              pagination: {
+                                    el: '.swiper-pagination',
+                                    clickable :true
+                              }
+                        },
+                        swiperSlides: [1, 2, 3, 4, 5]
+                  }
+            },
+            computed: {
+                  swiper() {
+                        return this.$refs.mySwiper.swiper;
+                  }
+            },
+            mounted () {
+                  //可以使用swiper这个对象去使用swiper官网中的那些方法
+                  console.log('this is current swiper instance object', this.swiper);
+                  // this.swiper.slideTo(0, 0, false);
+            }
+      }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+      h1, h2 {
+            font-weight: normal;
+      }
+      ul {
+            list-style-type: none;
+            padding: 0;
+      }
+      li {
+            display: inline-block;
+            margin: 0 10px;
+      }
+      a {
+            color: #42b983;
+      }
+      .swiper-slide{
+            height:300px;
+      }
+
+</style>
