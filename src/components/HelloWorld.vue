@@ -1,9 +1,12 @@
 
 <template>
-      <v-container style="height: 100%">
-            <v-row>
-                  <v-col cols="1"></v-col>
-                  <v-col :align="alignment" style="height: 300px" cols="10">
+      <v-app id="carousel">
+      <v-content>
+<!--      <v-container class="fill-height ma-0 pa-0"-->
+<!--                        fluid-->
+<!--      >-->
+            <v-row class="mb-12">
+                  <v-col class="mx-auto my-0"  style="height: 600px" cols="10">
                         <div class="scroll">
                               <swiper :options="swiperOption" ref="mySwiper">
                                     <!-- slides -->
@@ -23,22 +26,40 @@
 
                   </v-col>
             </v-row>
-            <v-row justify="center">
-                  <v-col
-                        cols="6"
-                        style="height: 500px"
-                  >
-                        <v-btn>Login</v-btn>
+            <v-row  justify="center" align="center">
+                  <v-col align-self="center" md="2">
+                        <v-btn x-large color="primary">Login</v-btn>
                   </v-col>
-                  <v-col
-                        cols="6"
-                        md="2"
-                  >
-                        <v-btn>Upload</v-btn>
+                  <v-col align-self="center" md="1">
+                        <v-btn x-large color="primary">Upload</v-btn>
                   </v-col>
             </v-row>
+<!--            <v-row class="mx-auto">-->
+<!--                  <v-col>-->
+<!--                        <v-btn>Login</v-btn>-->
+<!--                  </v-col>-->
+<!--                  <v-col>-->
+<!--                        <v-btn>Upload</v-btn>-->
+<!--                  </v-col>-->
+<!--            </v-row>-->
+<!--            <v-row class="mx-auto">-->
+<!--                  <v-col-->
+<!--                        cols="2"-->
+<!--                        style="height: 500px"-->
+<!--                  >-->
+<!--                        <v-btn>Login</v-btn>-->
+<!--                  </v-col>-->
+<!--                  <v-col-->
+<!--                        cols="6"-->
+<!--                        md="2"-->
+<!--                  >-->
+<!--                        <v-btn>Upload</v-btn>-->
+<!--                  </v-col>-->
+<!--            </v-row>-->
 
-      </v-container>
+<!--      </v-container>-->
+      </v-content>
+      </v-app>
 </template>
 
 <script>
@@ -124,7 +145,7 @@
             color: #42b983;
       }
       .swiper-slide{
-            height:300px;
+            height:500px;
       }
 
 </style>
