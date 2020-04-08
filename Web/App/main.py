@@ -28,3 +28,6 @@ app.config.from_object(config)
 # """Error messages to be sent if the user passes in invalid json or error on image processing possibly due to bad data"""
 # JSON_ERROR_INVALID_JSON = {"error": "failed to parse json, invalid format"}
 # JSON_ERROR_PREDICTION_FAILED = {"error": "failed to process image, try another image"}
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0")
