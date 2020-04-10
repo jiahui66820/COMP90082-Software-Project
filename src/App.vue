@@ -12,9 +12,12 @@
           Login
         </v-btn>
         <v-btn class="blue lighten-4">
-          <v-icon left class="mdi mdi-account-plus"></v-icon>
-          Sign Up
+          <router-link tag="v-card" to="/Register">
+            <v-icon left class="mdi mdi-account-plus"></v-icon>
+            Sign Up
+          </router-link>
         </v-btn>
+
 
       </v-toolbar-items>
     </v-app-bar>
