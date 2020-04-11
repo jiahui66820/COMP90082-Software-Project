@@ -6,15 +6,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        user:{
-            id:'',
-        }
+        user:null
     },
     mutations: {
         setUser(state,payload){
             state.user = payload
         }
     },
+
     actions: {
         register({commit},payload){
             firebase.auth().createUserWithEmailAndPassword(payload.email,payload.password).then(
@@ -30,6 +29,11 @@ export default new Vuex.Store({
                         alert(error)
                     }
                 )
+        }
+    },
+    getters:{
+        user(state){
+            return state.user
         }
     },
     modules: {

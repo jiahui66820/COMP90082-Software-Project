@@ -7,14 +7,24 @@
       <v-toolbar-title>Celebrities Recognition</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items style="height: 59px">
-        <v-btn class="blue lighten-4">
+        <v-btn v-if="menuItems.login.login" class="blue lighten-4">
           <v-icon left class="mdi mdi-login"></v-icon>
           Login
         </v-btn>
-        <v-btn class="blue lighten-4">
+        <v-btn v-if="menuItems.register.register" class="blue lighten-4">
           <router-link tag="v-card" to="/Register">
             <v-icon left class="mdi mdi-account-plus"></v-icon>
             Sign Up
+          </router-link>
+        </v-btn>
+        <v-btn v-if="menuItems.history.history" class="blue lighten-4">
+          <v-icon left class="mdi mdi-login"></v-icon>
+          History
+        </v-btn>
+        <v-btn v-if="menuItems.logout.logout" class="blue lighten-4">
+          <router-link tag="v-card" to="/Register">
+            <v-icon left class="mdi mdi-logout"></v-icon>
+            Log Out
           </router-link>
         </v-btn>
 
@@ -81,7 +91,30 @@
         //   nextButton:".swiper-button-next",
         //   observeParents:true,
         // },
-        sideNav:false
+        sideNav:false,
+
+      }
+    },
+    computed:{
+      menuItems(){
+        let menuItems = {
+        login:{login:true, title: 'Login'},
+        register:{register:true, title: 'Register'},
+        history:{history:false, title: 'History'},
+        logout:{logout:false, title: 'Logout'}
+      }
+        if(this.userIsAuthenticated){
+          menuItems = {
+          login:{login:false, title:'Login'},
+          register:{register:false, title:'Register'},
+          history:{history:true, title:'History'},
+          logout:{logout:true, title: 'Logout'}
+          }
+        }
+        return menuItems
+      },
+      userIsAuthenticated(){
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       }
     }
     // data: () => ({
